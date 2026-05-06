@@ -7,7 +7,7 @@
     <template v-else-if="entry">
       <v-row>
         <v-col cols="12" md="7">
-          <div class="text-h5 font-weight-bold mb-1">{{ dateFormatted }}</div>
+          <div class="text-h5 font-weight-bold mb-3">Rose #{{ entryNumber }}</div>
           <div class="d-flex gap-2 mb-5">
             <v-chip :style="{ backgroundColor: entry.color.hex }" size="small" variant="flat">
               {{ entry.color.name }}
@@ -46,9 +46,11 @@ import RoseCanvas from '../components/RoseCanvas.vue';
 import { useEntriesStore } from '../stores/entries';
 
 const route = useRoute();
-const entries = useEntriesStore();
+const entriesStore = useEntriesStore();
 const entry = ref(null);
 const loading = ref(true);
+
+const entryNumber = computed(() => Number(route.params.index) + 1);
 
 const displayAdjective = computed(() =>
   entry.value?.adjective === 'Other'
@@ -56,15 +58,12 @@ const displayAdjective = computed(() =>
     : entry.value?.adjective || ''
 );
 
-const dateFormatted = computed(() => {
-  if (!entry.value) return '';
-  const [y, m, d] = entry.value.date.split('-');
-  return new Date(+y, +m - 1, +d).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-});
-
 onMounted(async () => {
   try {
-    entry.value = await entries.fetchByDate(route.params.date);
+    entry.value = await entriesStore.fetchByIndex(
+      Number(route.params.year),
+      Number(route.params.index)
+    );
   } catch {
     entry.value = null;
   } finally {

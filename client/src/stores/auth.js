@@ -3,9 +3,18 @@ import { ref } from 'vue';
 import axios from 'axios';
 import router from '../router';
 
+function safeParseUser() {
+  try {
+    return JSON.parse(localStorage.getItem('rbt_user')) ?? null;
+  } catch {
+    localStorage.removeItem('rbt_user');
+    return null;
+  }
+}
+
 export const useAuthStore = defineStore('auth', () => {
   const token = ref(localStorage.getItem('rbt_token') || '');
-  const user = ref(JSON.parse(localStorage.getItem('rbt_user') || 'null'));
+  const user = ref(safeParseUser());
 
   function setSession(data) {
     token.value = data.token;

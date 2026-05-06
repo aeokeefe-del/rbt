@@ -5,11 +5,9 @@ const router = express.Router();
 const { listEntries, createEntry, getEntryByDate, updateEntry } = require('../controllers/entryController');
 const authMiddleware = require('../middleware/auth');
 
-router.use(authMiddleware);
-
-router.get('/', listEntries);
-router.post('/', createEntry);
-router.get('/:date', getEntryByDate);
-router.put('/:date', updateEntry);
+router.get('/entries', authMiddleware, listEntries);
+router.post('/entries', authMiddleware, createEntry);
+router.get('/entries/:date', authMiddleware, getEntryByDate);
+router.put('/entries/:date', authMiddleware, updateEntry);
 
 module.exports = router;

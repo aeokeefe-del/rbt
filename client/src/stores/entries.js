@@ -18,25 +18,29 @@ export const useEntriesStore = defineStore('entries', () => {
     }
   }
 
-  async function fetchByDate(date) {
-    const { data } = await axios.get(`/api/entries/${date}`);
+  async function fetchToday() {
+    const { data } = await axios.get('/api/entries', { params: { current: 1 } });
     return data.entry;
   }
 
+  async function fetchByIndex(year, index) {
+    const { data } = await axios.get('/api/entries', { params: { year } });
+    return data.entries[index] ?? null;
+  }
+
   async function saveEntry(payload) {
-    const today = new Date().toISOString().slice(0, 10);
-    const existing = entries.value.find((e) => e.date === today);
-    if (existing) {
-      const { data } = await axios.put(`/api/entries/${today}`, payload);
-      const idx = entries.value.findIndex((e) => e.date === today);
-      entries.value[idx] = data.entry;
-      return data.entry;
-    } else {
-      const { data } = await axios.post('/api/entries', { ...payload, date: today });
+    try {
+      const { data } = await axios.post('/api/entries', payload);
       entries.value.push(data.entry);
+      return data.entry;
+    } catch (err) {
+      if (err.response?.status !== 409) throw err;
+      const { data } = await axios.put('/api/entries', payload);
+      const idx = entries.value.findIndex((e) => e._id === data.entry._id);
+      if (idx >= 0) entries.value[idx] = data.entry;
       return data.entry;
     }
   }
 
-  return { entries, loading, fetchByYear, fetchByDate, saveEntry };
+  return { entries, loading, fetchByYear, fetchToday, fetchByIndex, saveEntry };
 });
