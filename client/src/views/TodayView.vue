@@ -1,110 +1,28 @@
-<template>
-  <v-container max-width="720" class="py-8">
-
-    <!-- Success state -->
-    <template v-if="saved">
-      <div class="d-flex flex-column align-center text-center py-8">
-        <RoseCanvas :color="form.color" :adjective="displayAdjective" :size="240" class="mb-6" />
-        <div class="text-h5 font-weight-bold mb-2">Your rose has grown in your garden.</div>
-        <div class="text-body-1 text-medium-emphasis mb-6">
-          Want to edit your reflection? Click <strong>Today</strong> in the navigation.
-        </div>
-        <v-btn color="primary" size="large" to="/garden" prepend-icon="mdi-arrow-right">
-          Go to Garden
-        </v-btn>
-      </div>
-    </template>
-
-    <!-- Entry form -->
-    <template v-else>
-      <div class="text-h5 font-weight-bold mb-6">Today's Entry</div>
-
-      <v-row>
-        <!-- Form column -->
-        <v-col cols="12" md="7">
-          <v-card elevation="2" rounded="lg" class="pa-5">
-            <v-form @submit.prevent="save">
-              <ColorPicker v-model="form.color" class="mb-5" />
-              <AdjectivePicker
-                v-model="form.adjective"
-                v-model:customAdjective="form.customAdjective"
-                class="mb-2"
-              />
-
-              <v-divider class="my-4" />
-
-              <v-textarea
-                v-model="form.rose"
-                label="🌹 Rose — something good that happened today"
-                variant="outlined"
-                rows="3"
-                class="mb-3"
-              />
-              <v-textarea
-                v-model="form.bud"
-                label="🌱 Bud — something you're looking forward to"
-                variant="outlined"
-                rows="3"
-                class="mb-3"
-              />
-              <v-textarea
-                v-model="form.thorn"
-                label="🥀 Thorn — something difficult today"
-                variant="outlined"
-                rows="3"
-                class="mb-4"
-              />
-
-              <v-alert v-if="error" type="error" variant="tonal" class="mb-4">{{ error }}</v-alert>
-
-              <v-btn type="submit" color="primary" block size="large" :loading="loading" :disabled="!isValid">
-                Save Today's Rose
-              </v-btn>
-            </v-form>
-          </v-card>
-        </v-col>
-
-        <!-- Preview column -->
-        <v-col cols="12" md="5" class="d-flex flex-column align-center justify-start pt-4">
-          <div class="text-subtitle-2 text-medium-emphasis mb-3">Your rose preview</div>
-          <RoseCanvas :color="form.color" :adjective="displayAdjective" :size="180" />
-          <div v-if="form.color" class="mt-3 text-body-2">
-            <v-chip :color="form.color.hex" size="small" variant="flat" class="mr-1" text-color="white">
-              {{ form.color.name }}
-            </v-chip>
-            <v-chip size="small" variant="tonal" color="secondary">{{ displayAdjective }}</v-chip>
-          </div>
-        </v-col>
-      </v-row>
-    </template>
-
-  </v-container>
-</template>
-
 <script setup>
-import { ref, computed, onMounted } from 'vue';
-import ColorPicker from '../components/ColorPicker.vue';
-import AdjectivePicker from '../components/AdjectivePicker.vue';
-import RoseCanvas from '../components/RoseCanvas.vue';
-import { useEntriesStore } from '../stores/entries';
+import { ref, computed, onMounted } from 'vue'
+import ColorPicker from '../components/ColorPicker.vue'
+import AdjectivePicker from '../components/AdjectivePicker.vue'
+import RoseCanvas from '../components/RoseCanvas.vue'
+import { useEntriesStore } from '../stores/entries'
 
-const entries = useEntriesStore();
-const loading = ref(false);
-const error = ref('');
-const saved = ref(false);
+const entries = useEntriesStore()
+const loading = ref(false)
+const error = ref('')
+const saved = ref(false)
 
-
-const form = ref({ color: null, adjective: '', customAdjective: '', rose: '', bud: '', thorn: '' });
+const form = ref({ color: null, adjective: '', customAdjective: '', rose: '', bud: '', thorn: '' })
 
 const displayAdjective = computed(() =>
   form.value.adjective === 'Other' ? (form.value.customAdjective || 'Other') : form.value.adjective
-);
+)
 
-const isValid = computed(() => form.value.color && form.value.adjective);
+const isValid = computed(() => form.value.color && form.value.adjective)
+
+const today = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })
 
 onMounted(async () => {
   try {
-    const existing = await entries.fetchToday();
+    const existing = await entries.fetchToday()
     if (existing) {
       form.value = {
         color: existing.color,
@@ -113,17 +31,17 @@ onMounted(async () => {
         rose: existing.rose,
         bud: existing.bud,
         thorn: existing.thorn,
-      };
+      }
     }
   } catch {
-    // No entry for today yet — start fresh
+    // No entry yet
   }
-});
+})
 
 async function save() {
-  error.value = '';
-  saved.value = false;
-  loading.value = true;
+  error.value = ''
+  saved.value = false
+  loading.value = true
   try {
     await entries.saveEntry({
       color: form.value.color,
@@ -133,12 +51,114 @@ async function save() {
       bud: form.value.bud,
       thorn: form.value.thorn,
       roseParams: { adjective: displayAdjective.value },
-    });
-    saved.value = true;
+    })
+    saved.value = true
   } catch (err) {
-    error.value = err.response?.data?.error || 'Failed to save';
+    error.value = err.response?.data?.error || 'Failed to save'
   } finally {
-    loading.value = false;
+    loading.value = false
   }
 }
 </script>
+
+<template>
+  <main class="today-page">
+    <!-- Saved state -->
+    <template v-if="saved">
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:80px 0">
+        <RoseCanvas :color="form.color" :adjective="displayAdjective" :size="240" style="margin-bottom:32px" />
+        <h2 style="font-family:var(--serif);font-size:32px;font-weight:500;color:var(--burgundy);margin:0 0 12px">
+          Your rose has grown in your garden.
+        </h2>
+        <p style="font-family:var(--serif);font-style:italic;font-size:20px;color:var(--ink-soft);margin:0 0 32px">
+          Come back tomorrow to plant another.
+        </p>
+        <a href="/garden" style="font-family:var(--serif);font-style:italic;font-size:22px;padding:14px 32px;border-radius:999px;background:var(--olive);color:var(--cream);border:none;cursor:pointer;text-decoration:none">
+          Go to Garden →
+        </a>
+      </div>
+    </template>
+
+    <!-- Entry form -->
+    <template v-else>
+      <div class="today-header">
+        <div class="date">{{ today }}</div>
+        <div class="greeting">plant your rose for today</div>
+      </div>
+
+      <div class="today-grid">
+        <!-- Form column -->
+        <div class="today-card">
+          <div class="step-label">Step 1 — Choose your color &amp; feeling</div>
+          <ColorPicker v-model="form.color" style="margin-bottom:20px" />
+          <AdjectivePicker
+            v-model="form.adjective"
+            v-model:customAdjective="form.customAdjective"
+            style="margin-bottom:8px"
+          />
+
+          <hr style="border:none;border-top:1.5px solid rgba(122,31,54,0.15);margin:22px 0" />
+
+          <div class="step-label">Step 2 — Reflect on your day</div>
+
+          <div class="entry-section rose">
+            <div class="label">Rose</div>
+            <div class="helper">Something beautiful or joyful that happened</div>
+            <textarea
+              v-model="form.rose"
+              placeholder="What made you smile today?"
+              rows="3"
+            />
+          </div>
+
+          <div class="entry-section bud">
+            <div class="label">Bud</div>
+            <div class="helper">Something you're looking forward to</div>
+            <textarea
+              v-model="form.bud"
+              placeholder="What are you hopeful about?"
+              rows="3"
+            />
+          </div>
+
+          <div class="entry-section thorn">
+            <div class="label">Thorn</div>
+            <div class="helper">A challenge or difficulty you faced</div>
+            <textarea
+              v-model="form.thorn"
+              placeholder="What was hard today?"
+              rows="3"
+            />
+          </div>
+
+          <div v-if="error" class="notice" style="margin-top:12px">{{ error }}</div>
+
+          <div class="save-bar">
+            <button class="save" :disabled="!isValid || loading" @click="save">
+              {{ loading ? 'Saving…' : 'Save Today\'s Rose' }}
+            </button>
+          </div>
+        </div>
+
+        <!-- Preview column -->
+        <div class="today-card preview-card">
+          <div class="step-label">Your rose preview</div>
+          <div class="preview-box">
+            <RoseCanvas
+              :color="form.color || { name: '', hex: '#e8d5c4' }"
+              :adjective="displayAdjective || 'Open'"
+              :size="180"
+            />
+          </div>
+          <div class="preview-meta" style="margin-top:16px">
+            <span v-if="form.color" class="chip">
+              <span class="swatch" :style="{ background: form.color.hex }" />
+              {{ form.color.name }}
+            </span>
+            <span v-if="displayAdjective" class="chip">{{ displayAdjective }}</span>
+          </div>
+        </div>
+      </div>
+    </template>
+  </main>
+</template>

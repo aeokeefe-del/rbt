@@ -1,73 +1,74 @@
-<template>
-  <v-container max-width="720" class="py-8">
-    <v-btn prepend-icon="mdi-arrow-left" variant="text" to="/garden" class="mb-4">Back to Garden</v-btn>
-
-    <v-progress-circular v-if="loading" indeterminate color="primary" class="d-block mx-auto" />
-
-    <template v-else-if="entry">
-      <v-row>
-        <v-col cols="12" md="7">
-          <div class="text-h5 font-weight-bold mb-3">Rose #{{ entryNumber }}</div>
-          <div class="d-flex gap-2 mb-5">
-            <v-chip :style="{ backgroundColor: entry.color.hex }" size="small" variant="flat">
-              {{ entry.color.name }}
-            </v-chip>
-            <v-chip size="small" variant="tonal" color="secondary">{{ displayAdjective }}</v-chip>
-          </div>
-
-          <v-card variant="tonal" color="pink-lighten-5" class="mb-3 pa-4" rounded="lg">
-            <div class="text-subtitle-2 font-weight-bold mb-1">🌹 Rose</div>
-            <div class="text-body-1">{{ entry.rose || '—' }}</div>
-          </v-card>
-          <v-card variant="tonal" color="green-lighten-5" class="mb-3 pa-4" rounded="lg">
-            <div class="text-subtitle-2 font-weight-bold mb-1">🌱 Bud</div>
-            <div class="text-body-1">{{ entry.bud || '—' }}</div>
-          </v-card>
-          <v-card variant="tonal" color="grey-lighten-4" class="pa-4" rounded="lg">
-            <div class="text-subtitle-2 font-weight-bold mb-1">🥀 Thorn</div>
-            <div class="text-body-1">{{ entry.thorn || '—' }}</div>
-          </v-card>
-        </v-col>
-
-        <v-col cols="12" md="5" class="d-flex align-start justify-center pt-4">
-          <RoseCanvas :color="entry.color" :adjective="displayAdjective" :size="200" />
-        </v-col>
-      </v-row>
-    </template>
-
-    <v-alert v-else type="error" variant="tonal">Entry not found.</v-alert>
-  </v-container>
-</template>
-
 <script setup>
-import { ref, computed, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
-import RoseCanvas from '../components/RoseCanvas.vue';
-import { useEntriesStore } from '../stores/entries';
+import { ref, computed, onMounted } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import RoseCanvas from '../components/RoseCanvas.vue'
+import { useEntriesStore } from '../stores/entries'
 
-const route = useRoute();
-const entriesStore = useEntriesStore();
-const entry = ref(null);
-const loading = ref(true);
+const route = useRoute()
+const router = useRouter()
+const entriesStore = useEntriesStore()
+const entry = ref(null)
+const loading = ref(true)
 
-const entryNumber = computed(() => Number(route.params.index) + 1);
+const entryNumber = computed(() => Number(route.params.index) + 1)
 
 const displayAdjective = computed(() =>
   entry.value?.adjective === 'Other'
     ? (entry.value.customAdjective || 'Other')
     : entry.value?.adjective || ''
-);
+)
 
 onMounted(async () => {
   try {
     entry.value = await entriesStore.fetchByIndex(
       Number(route.params.year),
       Number(route.params.index)
-    );
+    )
   } catch {
-    entry.value = null;
+    entry.value = null
   } finally {
-    loading.value = false;
+    loading.value = false
   }
-});
+})
 </script>
+
+<template>
+  <main class="entry-detail-page">
+    <button class="back-link" @click="router.push('/garden')">← Back to garden</button>
+
+    <div v-if="loading" class="notice">Loading…</div>
+    <div v-else-if="!entry" class="notice">Entry not found.</div>
+    <template v-else>
+      <div class="garden-header" style="margin-bottom:28px">
+        <div>
+          <div class="title" style="font-size:56px">Rose #{{ entryNumber }}</div>
+          <div class="subtitle">{{ displayAdjective }} · {{ entry.color?.name }}</div>
+        </div>
+      </div>
+
+      <div class="entry-detail-grid">
+        <div>
+          <div class="read-card rose">
+            <div class="label">Rose</div>
+            <p>{{ entry.rose || '—' }}</p>
+          </div>
+          <div class="read-card bud">
+            <div class="label">Bud</div>
+            <p>{{ entry.bud || '—' }}</p>
+          </div>
+          <div class="read-card thorn">
+            <div class="label">Thorn</div>
+            <p>{{ entry.thorn || '—' }}</p>
+          </div>
+        </div>
+        <div style="display:grid;place-items:center;position:sticky;top:24px">
+          <RoseCanvas :color="entry.color" :adjective="displayAdjective" :size="220" />
+          <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+            <span class="chip"><span class="swatch" :style="{ background: entry.color?.hex }" />{{ entry.color?.name }}</span>
+            <span class="chip">{{ displayAdjective }}</span>
+          </div>
+        </div>
+      </div>
+    </template>
+  </main>
+</template>

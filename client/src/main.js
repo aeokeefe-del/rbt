@@ -1,4 +1,5 @@
 import { createApp } from 'vue';
+import './assets/styles.css';
 import { createPinia } from 'pinia';
 import { createVuetify } from 'vuetify';
 import * as components from 'vuetify/components';

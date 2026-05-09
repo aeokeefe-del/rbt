@@ -18,6 +18,40 @@ export const COLORS = [
   { name: 'Soft Pink', hex: '#FFB6C1' },
 ];
 
+const SAMPLE_DATES = [
+  ['2026-04-02', 'Joyful',   'Crimson'],
+  ['2026-04-03', 'Calm',     'Sky'],
+  ['2026-04-04', 'Grateful', 'Peach'],
+  ['2026-04-07', 'Hopeful',  'Lavender'],
+  ['2026-04-08', 'Tired',    'Dusty Rose'],
+  ['2026-04-10', 'Excited',  'Golden'],
+  ['2026-04-11', 'Content',  'Mint'],
+  ['2026-04-14', 'Proud',    'Violet'],
+  ['2026-04-15', 'Calm',     'Ocean'],
+  ['2026-04-17', 'Anxious',  'Coral'],
+  ['2026-04-18', 'Joyful',   'Sunshine'],
+  ['2026-04-21', 'Grateful', 'Forest'],
+  ['2026-04-22', 'Sad',      'Mauve'],
+  ['2026-04-25', 'Hopeful',  'Soft Pink'],
+  ['2026-04-28', 'Excited',  'Teal'],
+  ['2026-05-01', 'Joyful',   'Warm Orange'],
+  ['2026-05-02', 'Calm',     'Ivory'],
+  ['2026-05-04', 'Grateful', 'Crimson'],
+  ['2026-05-06', 'Proud',    'Lavender'],
+  ['2026-05-07', 'Content',  'Mint'],
+  ['2026-05-08', 'Hopeful',  'Sky'],
+]
+
+export const SAMPLE_ENTRIES = SAMPLE_DATES.map(([date, adjective, colorName]) => ({
+  date,
+  color: COLORS.find(c => c.name === colorName),
+  adjective,
+  customAdjective: '',
+  rose:  'A small moment of light worth remembering.',
+  bud:   'Something I am quietly looking forward to.',
+  thorn: 'A small difficulty I worked through today.',
+}))
+
 export const ADJECTIVES = [
   'Joyful',
   'Calm',

@@ -1,14 +1,28 @@
-<template>
-    <div class="home-container">
-        <HomeSVG />
-    </div>
-</template>
-<script>
-import HomeSVG from '../components/HomeSVG.vue';
-export default {
-    name: "HomeView",
-    components: {
-        HomeSVG
-    }
+<script setup>
+import { useRouter } from 'vue-router'
+import { useAuthStore } from '../stores/auth'
+import Hero from '../components/Hero.vue'
+import RosePatternBand from '../components/RosePatternBand.vue'
+import QuoteBand from '../components/QuoteBand.vue'
+import StampCardsSection from '../components/StampCardsSection.vue'
+import Benefits from '../components/Benefits.vue'
+import CtaBand from '../components/CtaBand.vue'
+
+const router = useRouter()
+const auth = useAuthStore()
+
+function handlePrimary() {
+  if (auth.token) router.push('/today')
+  else router.push('/register')
 }
 </script>
+
+<template>
+  <Hero variant="empty" @primary="handlePrimary" @secondary="() => {}" />
+  <RosePatternBand variant="top" :height="170" />
+  <QuoteBand />
+  <RosePatternBand variant="middle" :height="190" />
+  <StampCardsSection />
+  <Benefits layout="icon" />
+  <CtaBand @click="handlePrimary" />
+</template>

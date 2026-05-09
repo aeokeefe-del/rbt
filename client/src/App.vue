@@ -1,21 +1,25 @@
+<script setup>
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { useAuthStore } from './stores/auth'
+import Navbar from './components/Navbar.vue'
+import Footer from './components/Footer.vue'
+
+const route = useRoute()
+const auth = useAuthStore()
+
+const isHome = computed(() => route.path === '/')
+</script>
+
 <template>
   <v-app>
-    <v-app-bar color="primary" elevation="2" v-if="auth.token">
-      <v-app-bar-title>
-        <span class="text-white font-weight-bold">🌹 Rose Bud Thorn</span>
-      </v-app-bar-title>
-      <v-btn :to="'/'" variant="text" color="white">Today</v-btn>
-      <v-btn :to="'/garden'" variant="text" color="white">Garden</v-btn>
-      <v-btn variant="text" color="white" @click="auth.logout">Sign Out</v-btn>
-    </v-app-bar>
-
-    <v-main>
-      <router-view />
-    </v-main>
+    <div class="app-shell">
+      <div class="top-stripe" />
+      <Navbar />
+      <v-main style="padding:0">
+        <router-view />
+      </v-main>
+      <Footer v-if="isHome" />
+    </div>
   </v-app>
 </template>
-
-<script setup>
-import { useAuthStore } from './stores/auth';
-const auth = useAuthStore();
-</script>
