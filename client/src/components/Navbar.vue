@@ -39,3 +39,9 @@ function logout() {
   </nav>
   <div class="nav-underline" />
 </template>
+<style scoped>
+.logo-img {
+  height: 50px;
+  width: auto;
+}
+</style>
