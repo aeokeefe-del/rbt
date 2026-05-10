@@ -20,9 +20,9 @@
   --crimson:    #DC143C;
   --lavender:   #967BB6;
 
-  --font-display: 'Whisper', cursive;             /* major titles */
-  --font-body:    'Cormorant Garamond', serif;      /* supporting text */
-  --font-ui:      'Inter', system-ui, sans-serif;  /* labels + UI */
+  --font-display: sloopscriptthree-medium, cursive; /* major titles */
+  --font-body:    warbler-text, serif;              /* supporting text */
+  --font-ui:      warbler-text, serif;              /* labels + UI */
 
   /* legacy aliases */
   --serif:  var(--font-body);
@@ -40,8 +40,6 @@
   --max: 1280px;
   --pad: clamp(20px, 4vw, 48px);
 }
-
-* { box-sizing: border-box; }
 
 html, body {
   margin: 0;
@@ -61,13 +59,6 @@ h1, h2, h3, h4 {
   line-height: 1.1;
 }
 
-button { font-family: inherit; }
-
-a { color: inherit; }
-
-img, svg { display: block; max-width: 100%; }
-
-/* ---------- App shell ---------- */
 .app-shell {
   min-height: 100vh;
   display: flex;
@@ -127,7 +118,6 @@ img, svg { display: block; max-width: 100%; }
   border-radius: 999px;
   transition: background 0.18s, color 0.18s;
 }
-.navbar .nav-link:hover { background: rgba(122, 31, 54, 0.08); }
 .navbar .pill {
   font-family: var(--serif);
   font-style: italic;
@@ -140,11 +130,6 @@ img, svg { display: block; max-width: 100%; }
   cursor: pointer;
   transition: background 0.18s, color 0.18s, transform 0.18s;
 }
-.navbar .pill:hover { background: var(--burgundy); color: var(--cream); }
-.navbar .pill.solid { background: var(--burgundy); color: var(--cream); }
-.navbar .pill.solid:hover { background: var(--burgundy-2); }
-
-/* underline below the nav matching wireframe */
 .nav-underline {
   height: 1.5px;
   background: var(--burgundy);
@@ -198,7 +183,7 @@ img, svg { display: block; max-width: 100%; }
 }
 .hero-title {
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 400;
   font-size: clamp(44px, 5.4vw, 78px);
   line-height: 1.02;
   color: var(--ink);
@@ -236,7 +221,6 @@ img, svg { display: block; max-width: 100%; }
   transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
   box-shadow: 0 6px 18px rgba(122,31,54,0.25);
 }
-.hero-cta:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift); background: var(--burgundy-2); }
 .hero-cta-ghost {
   font-family: var(--serif);
   font-style: italic;
@@ -248,9 +232,6 @@ img, svg { display: block; max-width: 100%; }
   color: var(--burgundy);
   cursor: pointer;
 }
-.hero-cta-ghost:hover { background: rgba(122,31,54,0.08); }
-
-/* variant: illustration — animated mini-garden */
 .hero-inner.variant-illustration {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -274,9 +255,6 @@ img, svg { display: block; max-width: 100%; }
   background: rgba(255,255,255,0.5);
   border-radius: 8px;
 }
-.mini-garden .cell.empty { background: rgba(122,31,54,0.04); }
-
-/* ---------- Quote band ---------- */
 .quote-band {
   padding: 24px var(--pad);
   position: relative;
@@ -315,7 +293,7 @@ img, svg { display: block; max-width: 100%; }
   padding: 40px var(--pad);
   font-family: var(--font-display);
   font-size: clamp(34px, 4vw, 48px);
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.5px;
 }
 
@@ -336,10 +314,6 @@ img, svg { display: block; max-width: 100%; }
   height: 1.5px;
   background: var(--burgundy);
 }
-.striped::before { top: 0; }
-.striped::after { bottom: 0; }
-
-/* ---------- Stamp cards section ---------- */
 .stamp-cards-section {
   padding: 80px var(--pad);
 }
@@ -350,7 +324,6 @@ img, svg { display: block; max-width: 100%; }
   grid-template-columns: repeat(3, 1fr);
   gap: 36px;
 }
-@media (max-width: 900px) {
   .stamp-cards-grid { grid-template-columns: 1fr; gap: 28px; }
 }
 
@@ -376,10 +349,6 @@ img, svg { display: block; max-width: 100%; }
   border-radius: 4px;
   pointer-events: none;
 }
-.stamp[data-color="rose"]   { --c: var(--burgundy); }
-.stamp[data-color="bud"]    { --c: var(--olive-2); }
-.stamp[data-color="thorn"]  { --c: var(--navy-2); }
-
 .stamp .icon {
   width: 90px; height: 90px;
   margin: 4px auto 18px;
@@ -442,7 +411,7 @@ img, svg { display: block; max-width: 100%; }
 .benefits-title {
   font-family: var(--font-display);
   font-size: clamp(32px, 4vw, 48px);
-  font-weight: 500;
+  font-weight: 400;
   margin: 6px 0 48px;
 }
 
@@ -456,14 +425,9 @@ img, svg { display: block; max-width: 100%; }
 .benefits-list-text .item {
   font-family: var(--font-display);
   font-size: clamp(28px, 3.2vw, 40px);
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.5px;
 }
-.benefits-list-text .item.rose  { color: var(--burgundy); }
-.benefits-list-text .item.bud   { color: var(--olive-2); }
-.benefits-list-text .item.thorn { color: var(--navy-2); }
-
-/* layout: icon+text rows */
 .benefits-list-icon {
   display: grid;
   gap: 28px;
@@ -491,7 +455,7 @@ img, svg { display: block; max-width: 100%; }
 }
 .benefits-list-icon .row h4 {
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 400;
   font-size: 26px;
   margin: 0 0 4px;
 }
@@ -502,11 +466,6 @@ img, svg { display: block; max-width: 100%; }
   font-family: var(--ui);
   line-height: 1.5;
 }
-.benefits-list-icon .row.rose  h4 { color: var(--burgundy); }
-.benefits-list-icon .row.bud   h4 { color: var(--olive-2); }
-.benefits-list-icon .row.thorn h4 { color: var(--navy-2); }
-
-/* layout: card grid */
 .benefits-list-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -530,7 +489,7 @@ img, svg { display: block; max-width: 100%; }
 }
 .benefits-list-cards .card h4 {
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 400;
   font-size: 26px;
   margin: 0 0 8px;
 }
@@ -541,11 +500,6 @@ img, svg { display: block; max-width: 100%; }
   font-family: var(--ui);
   line-height: 1.55;
 }
-.benefits-list-cards .card.rose  h4, .benefits-list-cards .card.rose  .icon { color: var(--burgundy); }
-.benefits-list-cards .card.bud   h4, .benefits-list-cards .card.bud   .icon { color: var(--olive-2); }
-.benefits-list-cards .card.thorn h4, .benefits-list-cards .card.thorn .icon { color: var(--navy-2); }
-
-@media (max-width: 800px) {
   .benefits-list-cards { grid-template-columns: 1fr; }
 }
 
@@ -593,8 +547,6 @@ img, svg { display: block; max-width: 100%; }
   font-size: 14px;
   color: var(--ink-soft);
 }
-.footer .links a { cursor: pointer; }
-.footer .links a:hover { color: var(--burgundy); }
 .footer .logo-mark {
   font-family: var(--script);
   font-size: 56px;
@@ -611,9 +563,6 @@ img, svg { display: block; max-width: 100%; }
   font-size: 13px;
   color: var(--ink-soft);
 }
-@media (max-width: 700px) {
-  .footer { grid-template-columns: 1fr; text-align: center; }
-  .footer .copyright { text-align: center; }
   .footer .links { justify-content: center; flex-wrap: wrap; }
 }
 
@@ -638,7 +587,6 @@ img, svg { display: block; max-width: 100%; }
   animation: fadein 0.25s ease;
   padding: 20px;
 }
-@keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
 .modal {
   background: var(--cream);
   border: 1.5px solid var(--burgundy);
@@ -648,11 +596,10 @@ img, svg { display: block; max-width: 100%; }
   position: relative;
   animation: pop 0.3s cubic-bezier(.2,.8,.2,1);
 }
-@keyframes pop { from { transform: scale(0.94); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 .modal h2 {
   font-family: var(--font-display);
   font-style: italic;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 36px;
   margin: 0;
   text-align: center;
@@ -677,7 +624,6 @@ img, svg { display: block; max-width: 100%; }
   width: 36px; height: 36px;
   border-radius: 50%;
 }
-.modal .close:hover { background: rgba(122,31,54,0.08); }
 .modal .field {
   display: block;
   margin-bottom: 14px;
@@ -728,7 +674,6 @@ img, svg { display: block; max-width: 100%; }
   margin-top: 8px;
   transition: background 0.2s, transform 0.2s;
 }
-.modal .submit:hover { background: var(--burgundy-2); transform: translateY(-1px); }
 .modal .switch {
   text-align: center;
   margin-top: 18px;
@@ -778,7 +723,6 @@ img, svg { display: block; max-width: 100%; }
   gap: 36px;
   align-items: start;
 }
-@media (max-width: 900px) {
   .today-grid { grid-template-columns: 1fr; }
 }
 .today-card {
@@ -797,7 +741,7 @@ img, svg { display: block; max-width: 100%; }
 }
 .today-card h3 {
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 400;
   font-size: 28px;
   margin: 0 0 18px;
 }
@@ -814,9 +758,6 @@ img, svg { display: block; max-width: 100%; }
   line-height: 1;
   margin-bottom: 6px;
 }
-.entry-section.rose  .label { color: var(--burgundy); }
-.entry-section.bud   .label { color: var(--olive-2); }
-.entry-section.thorn .label { color: var(--navy-2); }
 .entry-section .helper {
   font-family: var(--serif);
   font-style: italic;
@@ -838,10 +779,6 @@ img, svg { display: block; max-width: 100%; }
   outline: none;
   transition: border-color 0.18s, box-shadow 0.18s;
 }
-.entry-section.rose  textarea:focus { border-color: var(--burgundy); box-shadow: 0 0 0 3px rgba(122,31,54,0.12); }
-.entry-section.bud   textarea:focus { border-color: var(--olive-2); box-shadow: 0 0 0 3px rgba(94,106,63,0.18); }
-.entry-section.thorn textarea:focus { border-color: var(--navy-2);  box-shadow: 0 0 0 3px rgba(42,53,90,0.18); }
-
 .save-bar {
   display: flex;
   gap: 14px;
@@ -860,8 +797,6 @@ img, svg { display: block; max-width: 100%; }
   cursor: pointer;
   transition: background 0.2s, transform 0.2s;
 }
-.save-bar .save:hover { background: var(--burgundy-2); transform: translateY(-1px); }
-.save-bar .save:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 .save-bar .status {
   font-family: var(--ui);
   font-size: 14px;
@@ -920,7 +855,6 @@ img, svg { display: block; max-width: 100%; }
   box-shadow: 0 1px 4px rgba(0,0,0,0.18);
   position: relative;
 }
-.color-swatch:hover { transform: scale(1.18); }
 .color-swatch.selected {
   border-color: var(--ink);
   transform: scale(1.2);
@@ -930,9 +864,6 @@ img, svg { display: block; max-width: 100%; }
   font-size: 13px;
   color: var(--ink-soft);
 }
-.color-name strong { color: var(--ink); font-weight: 600; }
-
-/* ---------- Adjective picker ---------- */
 .adj-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
@@ -950,7 +881,6 @@ img, svg { display: block; max-width: 100%; }
   transition: background 0.15s, color 0.15s, border-color 0.15s;
   text-align: center;
 }
-.adj-chip:hover { border-color: var(--burgundy); }
 .adj-chip.selected {
   background: var(--burgundy);
   color: var(--cream);
@@ -966,9 +896,6 @@ img, svg { display: block; max-width: 100%; }
   font-size: 17px;
   outline: none;
 }
-.adj-other:focus { border-color: var(--burgundy); }
-
-/* ---------- Garden View ---------- */
 .garden-page {
   padding: 56px var(--pad) 100px;
   max-width: 1080px;
@@ -1013,8 +940,6 @@ img, svg { display: block; max-width: 100%; }
   font-size: 18px;
   cursor: pointer;
 }
-.garden-yearpicker button:hover:not(:disabled) { background: rgba(122,31,54,0.1); }
-.garden-yearpicker button:disabled { opacity: 0.3; cursor: not-allowed; }
 .garden-yearpicker .year {
   font-family: var(--serif);
   font-size: 22px;
@@ -1099,16 +1024,12 @@ img, svg { display: block; max-width: 100%; }
   padding: 6px 0;
   margin-bottom: 20px;
 }
-.back-link:hover { text-decoration: underline; }
-
 .entry-detail-grid {
   display: grid;
   grid-template-columns: 1fr 280px;
   gap: 36px;
   align-items: start;
 }
-@media (max-width: 800px) { .entry-detail-grid { grid-template-columns: 1fr; } }
-
 .read-card {
   border: 1.5px solid;
   border-radius: var(--radius);
@@ -1116,18 +1037,12 @@ img, svg { display: block; max-width: 100%; }
   margin-bottom: 14px;
   background: var(--cream);
 }
-.read-card.rose  { border-color: var(--burgundy); }
-.read-card.bud   { border-color: var(--olive-2); }
-.read-card.thorn { border-color: var(--navy-2); }
 .read-card .label {
   font-family: var(--script);
   font-size: 36px;
   line-height: 1;
   margin-bottom: 6px;
 }
-.read-card.rose  .label { color: var(--burgundy); }
-.read-card.bud   .label { color: var(--olive-2); }
-.read-card.thorn .label { color: var(--navy-2); }
 .read-card p {
   font-family: var(--serif);
   font-size: 19px;
@@ -1188,10 +1103,6 @@ img, svg { display: block; max-width: 100%; }
 }
 
 /* Tighten navbar so the underline doesn't crowd buttons */
-.navbar { padding: 18px var(--pad) 14px; }
-.nav-underline { margin-top: 14px; }
-
-/* ---------- Hero — wireframe-faithful image rectangle + sign-up CTA below ---------- */
 .hero-inner.variant-empty {
   min-height: 0;
   border: none;
@@ -1292,9 +1203,6 @@ img, svg { display: block; max-width: 100%; }
   text-underline-offset: 3px;
   margin-left: 4px;
 }
-.hero-routerlink:hover em { color: var(--burgundy-2); }
-
-/* ---------- Stamp cards — equal-size, framed stamp outline ---------- */
 .stamp-cards-grid {
   align-items: stretch;
 }
@@ -1384,9 +1292,6 @@ img, svg { display: block; max-width: 100%; }
 .entry-section .helper {
   color: var(--olive-2);
 }
-.entry-section.rose  textarea { color: var(--burgundy-2); border-color: rgba(122,31,54,0.30); }
-.entry-section.bud   textarea { color: var(--olive-2);    border-color: rgba(94,106,63,0.30); }
-.entry-section.thorn textarea { color: var(--navy-2);     border-color: rgba(42,53,90,0.30); }
 .entry-section textarea::placeholder {
   color: rgba(60, 16, 30, 0.35);
   font-style: italic;
@@ -1407,14 +1312,6 @@ img, svg { display: block; max-width: 100%; }
   color: var(--olive-2);
 }
 
-.color-name strong { color: var(--burgundy); }
-.color-name { color: var(--olive-2); }
-
-.adj-chip { color: var(--olive-2); border-color: rgba(94,106,63,0.30); }
-.adj-chip:hover { border-color: var(--olive-2); }
-.adj-chip.selected { background: var(--olive-2); border-color: var(--olive-2); color: var(--cream); }
-
-/* ---------- Garden — green as primary, blue as secondary ---------- */
 .garden-page {
   background: linear-gradient(180deg, var(--cream) 0%, rgba(94,106,63,0.06) 100%);
 }
@@ -1427,14 +1324,6 @@ img, svg { display: block; max-width: 100%; }
 .garden-yearpicker {
   border-color: var(--olive-2);
 }
-.garden-yearpicker button { color: var(--olive-2); }
-.garden-yearpicker button:hover:not(:disabled) { background: rgba(94,106,63,0.12); }
-.garden-yearpicker .year { color: var(--olive-2); }
-
-.garden-stats .stat strong { color: var(--olive-2); }
-.garden-stats .stat span   { color: var(--navy-2); }
-
-/* The garden grid itself — soft sage-green nature backdrop */
 .garden-grid {
   background:
     radial-gradient(circle at 20% 30%, rgba(94,106,63,0.10) 0, transparent 50%),
@@ -1470,6 +1359,3 @@ img, svg { display: block; max-width: 100%; }
 }
 
 /* ---------- Entry Detail (read-only past entry) ---------- */
-.entry-detail-page .back-link { color: var(--olive-2); }
-.entry-detail-page .read-card p { color: var(--ink-soft); }
-
