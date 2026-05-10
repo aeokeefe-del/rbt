@@ -9,7 +9,6 @@ const BENEFITS = [
   { variant: 'thorn', title: 'Nurture Gratitude',        body: 'Reflection, not perfection. A practice that meets you where you are.',          glyph: 'thorn' },
 ]
 
-const accentVar = { rose: '--burgundy', bud: '--olive-2', thorn: '--navy-2' }
 </script>
 
 <template>
@@ -22,7 +21,7 @@ const accentVar = { rose: '--burgundy', bud: '--olive-2', thorn: '--navy-2' }
         <!-- Icon rows (default) -->
         <div v-if="layout === 'icon'" class="benefits-list-icon">
           <div v-for="b in BENEFITS" :key="b.title" :class="['row', b.variant]">
-            <div :style="{ color: `var(${accentVar[b.variant]})`, width: '56px', height: '56px' }">
+            <div class="icon">
               <!-- Rose glyph -->
               <svg v-if="b.glyph === 'rose'" viewBox="0 0 80 80" width="56" height="56" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="40" cy="34" r="14"/><circle cx="40" cy="34" r="9"/><circle cx="40" cy="34" r="4"/>
@@ -50,7 +49,7 @@ const accentVar = { rose: '--burgundy', bud: '--olive-2', thorn: '--navy-2' }
         <!-- Card grid -->
         <div v-else-if="layout === 'cards'" class="benefits-list-cards">
           <div v-for="b in BENEFITS" :key="b.title" :class="['card', b.variant]">
-            <div class="icon" :style="{ color: `var(${accentVar[b.variant]})` }">
+            <div class="icon">
               <svg v-if="b.glyph === 'rose'" viewBox="0 0 80 80" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="40" cy="34" r="14"/><circle cx="40" cy="34" r="9"/><circle cx="40" cy="34" r="4"/>
                 <path d="M40 48 L40 72"/><path d="M40 60 Q30 56 24 62"/><path d="M40 66 Q50 62 56 68"/>

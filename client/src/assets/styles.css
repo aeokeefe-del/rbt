@@ -517,12 +517,14 @@ h1, h2, h3, h4 {
 .benefits-list-cards .card .icon {
   width: 44px; height: 44px;
   margin-bottom: 18px;
+  color: var(--c);
 }
 .benefits-list-cards .card h4 {
   font-family: var(--font-display);
   font-weight: 400;
   font-size: 26px;
   margin: 0 0 8px;
+  color: var(--c);
 }
 .benefits-list-cards .card p {
   margin: 0;
@@ -531,6 +533,17 @@ h1, h2, h3, h4 {
   font-family: var(--ui);
   line-height: 1.55;
 }
+
+/* per-variant accent colors */
+.benefits-list-icon .row.rose,
+.benefits-list-cards .card.rose  { --c: var(--burgundy); }
+.benefits-list-icon .row.bud,
+.benefits-list-cards .card.bud   { --c: var(--olive); }
+.benefits-list-icon .row.thorn,
+.benefits-list-cards .card.thorn { --c: var(--navy); }
+
+.benefits-list-icon .row .icon { color: var(--c); }
+.benefits-list-icon .row h4    { color: var(--c); }
   .benefits-list-cards { grid-template-columns: 1fr; }
 }
 
