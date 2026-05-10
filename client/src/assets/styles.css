@@ -545,7 +545,7 @@ h1, h2, h3, h4 {
 .benefits-list-icon .row .icon { color: var(--c); }
 .benefits-list-icon .row h4    { color: var(--c); }
   .benefits-list-cards { grid-template-columns: 1fr; }
-}
+
 
 /* ---------- CTA Band ---------- */
 .cta-band {
