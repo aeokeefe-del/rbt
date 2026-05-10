@@ -5,7 +5,7 @@ import StripedAwning from './StripedAwning.vue'
 </script>
 
 <template>
-  <div class="section-header">What is Rose Bud Thorn?</div>
+  <div class="section-header">what is rose bud thorn?</div>
   <StripedAwning>
     <div class="stamp-cards-section" style="padding: 0 var(--pad)">
       <div class="stamp-cards-grid">
