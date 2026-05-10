@@ -1,6 +1,7 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '../stores/auth'
+import logoImg from '../assets/logo_rbt.png'
 
 const router = useRouter()
 const auth = useAuthStore()
@@ -21,7 +22,7 @@ function logout() {
       aria-label="rbt. home"
       @click="navigate(auth.token ? '/today' : '/')"
     >
-      <img src="/assets/rbt-logo.png" alt="rbt." class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
+      <img :src="logoImg" alt="rbt." class="logo-img" />
       <span class="logo" style="display:none">rbt<span class="dot">.</span></span>
     </button>
     <div class="nav-actions">

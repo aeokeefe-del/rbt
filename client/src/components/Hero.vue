@@ -1,12 +1,12 @@
 <script setup>
 import RoseCanvas from './RoseCanvas.vue'
 import { SAMPLE_ENTRIES } from '../constants/palette'
+import heroImg from '../assets/hero_img_rbt.png'
 
 defineProps({ variant: { type: String, default: 'empty' } })
 defineEmits(['primary', 'secondary'])
 
 const seeds = SAMPLE_ENTRIES.slice(0, 12)
-const heroImg = '/assets/hero_img_rbt.png'
 </script>
 
 <template>

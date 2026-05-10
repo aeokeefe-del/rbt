@@ -1,5 +1,6 @@
 <script setup>
 import RosePatternBand from './RosePatternBand.vue'
+import logoImg from '../assets/logo_rbt.png'
 </script>
 
 <template>
@@ -11,7 +12,7 @@ import RosePatternBand from './RosePatternBand.vue'
       <a href="#">Terms</a>
       <a href="#">Contact</a>
     </div>
-    <img src="/assets/rbt-logo.png" alt="rbt." class="footer-logo-img" />
+    <img :src="logoImg" alt="rbt." class="footer-logo-img" />
     <div class="copyright">© 2026 Rose Bud Thorn</div>
   </footer>
 </template>
