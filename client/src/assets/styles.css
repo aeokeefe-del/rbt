@@ -340,19 +340,14 @@ h1, h2, h3, h4 {
 .stamp .icon {
   width: 90px; height: 90px;
   margin: 4px auto 18px;
-  color: var(--burgundy);
-}
-.stamp .bud {
-  width: 90px; height: 90px;
-  margin: 4px auto 18px;
-  color: var(--olive);
+  color: var(--c);
 }
 .stamp .label {
   font-family: var(--script);
   font-size: 56px;
   line-height: 1;
-  color: var(--burgundy);
   margin: 0 0 14px;
+  color: var(--c);
 }
 .stamp .body {
   font-family: var(--serif);
