@@ -532,7 +532,7 @@ h1, h2, h3, h4 {
   line-height: 1.55;
 }
   .benefits-list-cards { grid-template-columns: 1fr; }
-}
+
 
 /* ---------- CTA Band ---------- */
 .cta-band {
