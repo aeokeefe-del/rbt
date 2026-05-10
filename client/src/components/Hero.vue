@@ -16,7 +16,7 @@ const seeds = SAMPLE_ENTRIES.slice(0, 12)
       <div class="hero-image-frame" aria-label="Rose Bud Thorn hero">
         <img :src="heroImg" alt="" class="hero-bg-img" />
         <div class="hero-overlay">
-          <p class="hero-welcome">welcome to</p>
+          <p class="hero-welcome" :style="{ fontFamily: 'var(--font-body)', fontSize: '2rem', paddingBottom: '1rem' }">welcome to</p>
           <h1 class="hero-brand">
             <em>R</em>ose&nbsp;Bud&nbsp;Thorn
           </h1>
@@ -24,7 +24,7 @@ const seeds = SAMPLE_ENTRIES.slice(0, 12)
       </div>
     </div>
     <div class="hero-cta-row">
-      <button class="hero-cta" @click="$emit('primary')">Begin your garden →</button>
+      <button class="hero-cta" @click="$emit('primary')">begin your garden →</button>
       <button class="hero-routerlink" type="button" @click="$emit('primary')">
         new here? <em>sign up</em>
       </button>

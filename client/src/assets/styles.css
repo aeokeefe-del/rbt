@@ -65,6 +65,7 @@ h1, h2, h3, h4 {
   flex-direction: column;
   position: relative;
   overflow-x: hidden;
+  background-color: var(--cream);
 }
 
 /* ---------- Top stripe divider (matches wireframe) ---------- */
@@ -80,9 +81,10 @@ h1, h2, h3, h4 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 22px var(--pad);
+  padding: 15px var(--pad);
   position: relative;
   z-index: 30;
+  background: var(--cream);
 }
 .navbar .logo {
   font-family: var(--script);
@@ -108,7 +110,7 @@ h1, h2, h3, h4 {
   align-items: center;
 }
 .navbar .nav-link {
-  font-family: var(--serif);
+  font-family: var(--font-body);
   font-size: 22px;
   color: var(--ink);
   background: none;
@@ -138,8 +140,10 @@ h1, h2, h3, h4 {
 
 /* ---------- Hero ---------- */
 .hero {
-  padding: 56px var(--pad) 72px;
+  padding: 25px var(--pad) 15px;
   position: relative;
+  background: var(--cream);
+  border-bottom: 1.5px solid var(--burgundy);
 }
 .hero-inner {
   max-width: var(--max);
@@ -175,7 +179,7 @@ h1, h2, h3, h4 {
   align-items: center;
 }
 .hero-eyebrow {
-  font-family: var(--script);
+  font-family: var(--font-body);
   color: var(--olive);
   font-size: 36px;
   line-height: 1;
@@ -209,8 +213,7 @@ h1, h2, h3, h4 {
   flex-wrap: wrap;
 }
 .hero-cta {
-  font-family: var(--serif);
-  font-style: italic;
+  font-family: var(--font-body);
   font-size: 22px;
   padding: 14px 30px;
   border-radius: 999px;
@@ -218,14 +221,14 @@ h1, h2, h3, h4 {
   background: var(--burgundy);
   color: var(--cream);
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
   box-shadow: 0 6px 18px rgba(122,31,54,0.25);
 }
 .hero-cta-ghost {
-  font-family: var(--serif);
+  font-family: var(--font-body);
   font-style: italic;
   font-size: 22px;
-  padding: 14px 30px;
+  padding: 14px 3px;
   border-radius: 999px;
   background: transparent;
   border: 1.5px solid var(--burgundy);
@@ -239,25 +242,10 @@ h1, h2, h3, h4 {
   padding: 56px;
   align-items: center;
 }
-.mini-garden {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
-  padding: 20px;
-  border: 1.5px dashed rgba(122,31,54,0.3);
-  border-radius: var(--radius);
-  background: var(--cream-deep);
-}
-.mini-garden .cell {
-  aspect-ratio: 1;
-  display: grid;
-  place-items: center;
-  background: rgba(255,255,255,0.5);
-  border-radius: 8px;
-}
 .quote-band {
   padding: 24px var(--pad);
   position: relative;
+  background: var(--cream);
 }
 .quote-band-inner {
   max-width: var(--max);
@@ -266,33 +254,34 @@ h1, h2, h3, h4 {
   border-radius: var(--radius);
   padding: 64px 40px;
   text-align: center;
-  background: var(--cream);
+  background: var(--olive);
 }
 .quote-text {
-  font-family: var(--serif);
-  font-style: italic;
+  font-family: var(--font-body);
   font-size: clamp(28px, 3.4vw, 44px);
-  color: var(--olive-2);
+  color: var(--cream);
   margin: 0;
   font-weight: 500;
   line-height: 1.25;
+  padding-bottom: 50px;
 }
 .quote-author {
   font-family: var(--script);
   font-size: clamp(38px, 4vw, 56px);
-  color: var(--olive-2);
+  color: var(--cream);
   margin-top: 18px;
   line-height: 1;
 }
 
 /* ---------- "What is Rose Bud Thorn?" header strip ---------- */
 .section-header {
-  background: var(--burgundy);
-  color: var(--cream);
+  background: var(--cream);
+  border: var(--burgundy) solid 1.5px;
+  color: var(--burgundy);
   text-align: center;
-  padding: 40px var(--pad);
-  font-family: var(--font-display);
-  font-size: clamp(34px, 4vw, 48px);
+  margin-top: 10px;
+  font-family: var(--font-body);
+  font-size: clamp(28px, 3.4vw, 44px);
   font-weight: 400;
   letter-spacing: 0.5px;
 }
@@ -302,8 +291,8 @@ h1, h2, h3, h4 {
   background:
     repeating-linear-gradient(
       90deg,
-      var(--olive) 0 44px,
-      var(--cream-deep) 44px 88px
+      #7a8755a6 0 44px,
+      var(--cream) 44px 88px
     );
   position: relative;
 }
@@ -312,7 +301,6 @@ h1, h2, h3, h4 {
   position: absolute;
   left: 0; right: 0;
   height: 1.5px;
-  background: var(--burgundy);
 }
 .stamp-cards-section {
   padding: 80px var(--pad);
@@ -352,13 +340,18 @@ h1, h2, h3, h4 {
 .stamp .icon {
   width: 90px; height: 90px;
   margin: 4px auto 18px;
-  color: var(--c);
+  color: var(--burgundy);
+}
+.stamp .bud {
+  width: 90px; height: 90px;
+  margin: 4px auto 18px;
+  color: var(--olive);
 }
 .stamp .label {
   font-family: var(--script);
   font-size: 56px;
   line-height: 1;
-  color: var(--c);
+  color: var(--burgundy);
   margin: 0 0 14px;
 }
 .stamp .body {
