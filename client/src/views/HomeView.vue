@@ -19,10 +19,11 @@ function handlePrimary() {
 
 <template>
   <Hero variant="empty" @primary="handlePrimary" @secondary="() => {}" />
-  <RosePatternBand variant="top" :height="170" />
+  <RosePatternBand variant="middle" />
   <QuoteBand />
-  <RosePatternBand variant="middle" :height="190" />
+  <RosePatternBand variant="middle" />
   <StampCardsSection />
   <Benefits layout="icon" />
-  <CtaBand @click="handlePrimary" />
+  <CtaBand @click="handlePrimary"/>
+  <RosePatternBand variant="bottom" />
 </template>

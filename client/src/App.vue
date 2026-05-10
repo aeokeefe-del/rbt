@@ -19,7 +19,6 @@ const isHome = computed(() => route.path === '/')
       <v-main style="padding:0">
         <router-view />
       </v-main>
-      <Footer v-if="isHome" />
     </div>
   </v-app>
 </template>
