@@ -118,6 +118,10 @@ h1, h2, h3, h4 {
   border-radius: 999px;
   transition: background 0.18s, color 0.18s;
 }
+.navbar .nav-link:hover {
+  background: rgba(122,31,54,0.08);
+  color: var(--burgundy);
+}
 .navbar .pill {
   font-family: var(--serif);
   font-style: italic;
@@ -128,7 +132,22 @@ h1, h2, h3, h4 {
   background: var(--cream);
   color: var(--burgundy);
   cursor: pointer;
-  transition: background 0.18s, color 0.18s, transform 0.18s;
+  transition: background 0.18s, color 0.18s, transform 0.2s, box-shadow 0.2s;
+}
+.navbar .pill:hover {
+  background: var(--burgundy);
+  color: var(--cream);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(122,31,54,0.28);
+}
+.navbar .pill.solid {
+  background: var(--burgundy);
+  color: var(--cream);
+}
+.navbar .pill.solid:hover {
+  background: var(--burgundy-2);
+  box-shadow: 0 6px 20px rgba(122,31,54,0.38);
+  transform: translateY(-2px);
 }
 .nav-underline {
   height: 1.5px;
@@ -221,6 +240,15 @@ h1, h2, h3, h4 {
   transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
   box-shadow: 0 6px 18px rgba(122,31,54,0.25);
 }
+.hero-cta:hover {
+  background: var(--burgundy-2);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(122,31,54,0.38);
+}
+.hero-cta:active {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(122,31,54,0.28);
+}
 .hero-cta-ghost {
   font-family: var(--serif);
   font-style: italic;
@@ -231,6 +259,16 @@ h1, h2, h3, h4 {
   border: 1.5px solid var(--burgundy);
   color: var(--burgundy);
   cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.hero-cta-ghost:hover {
+  background: var(--burgundy);
+  color: var(--cream);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(122,31,54,0.28);
+}
+.hero-cta-ghost:active {
+  transform: translateY(-1px);
 }
 .hero-inner.variant-illustration {
   display: grid;
