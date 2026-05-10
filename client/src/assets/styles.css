@@ -605,16 +605,16 @@ h1, h2, h3, h4 {
 }
 .modal h2 {
   font-family: var(--font-display);
-  font-style: italic;
   font-weight: 400;
-  font-size: 36px;
+  font-size: 48px;
   margin: 0;
   text-align: center;
   color: var(--burgundy);
 }
 .modal .sub {
-  font-family: var(--script);
-  font-size: 32px;
+  font-family: var(--font-body);
+  padding-top: 10px;
+  font-size: 24px;
   color: var(--olive);
   text-align: center;
   margin: -4px 0 24px;
@@ -669,13 +669,14 @@ h1, h2, h3, h4 {
 }
 .modal .submit {
   width: 100%;
-  padding: 14px;
+  padding: 10px;
+  padding-top: 5px;
+  text-align: center;
   border: none;
   border-radius: 999px;
   background: var(--burgundy);
   color: var(--cream);
-  font-family: var(--serif);
-  font-style: italic;
+  font-family: var(--font-body);
   font-size: 22px;
   cursor: pointer;
   margin-top: 8px;
