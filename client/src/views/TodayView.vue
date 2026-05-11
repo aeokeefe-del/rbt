@@ -68,13 +68,13 @@ async function save() {
       <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:80px 0">
         <RoseCanvas :color="form.color" :adjective="displayAdjective" :size="240" style="margin-bottom:32px" />
         <h2 style="font-family:var(--serif);font-size:32px;font-weight:500;color:var(--burgundy);margin:0 0 12px">
-          Your rose has grown in your garden.
+          your rose has grown in your garden.
         </h2>
         <p style="font-family:var(--serif);font-style:italic;font-size:20px;color:var(--ink-soft);margin:0 0 32px">
-          Come back tomorrow to plant another.
+          come back tomorrow to plant another.
         </p>
         <a href="/garden" style="font-family:var(--serif);font-style:italic;font-size:22px;padding:14px 32px;border-radius:999px;background:var(--olive);color:var(--cream);border:none;cursor:pointer;text-decoration:none">
-          Go to Garden →
+          go to garden →
         </a>
       </div>
     </template>
@@ -89,7 +89,7 @@ async function save() {
       <div class="today-grid">
         <!-- Form column -->
         <div class="today-card">
-          <div class="step-label">Step 1 — Choose your color &amp; feeling</div>
+          <div class="step-label">step 1 — choose your color &amp; feeling</div>
           <ColorPicker v-model="form.color" style="margin-bottom:20px" />
           <AdjectivePicker
             v-model="form.adjective"
@@ -99,11 +99,11 @@ async function save() {
 
           <hr style="border:none;border-top:1.5px solid rgba(122,31,54,0.15);margin:22px 0" />
 
-          <div class="step-label">Step 2 — Reflect on your day</div>
+          <div class="step-label">step 2 — reflect on your day</div>
 
           <div class="entry-section rose">
             <div class="label">Rose</div>
-            <div class="helper">Something beautiful or joyful that happened</div>
+            <div class="helper">something beautiful or joyful that happened</div>
             <textarea
               v-model="form.rose"
               placeholder="What made you smile today?"
@@ -113,7 +113,7 @@ async function save() {
 
           <div class="entry-section bud">
             <div class="label">Bud</div>
-            <div class="helper">Something you're looking forward to</div>
+            <div class="helper">something you're looking forward to</div>
             <textarea
               v-model="form.bud"
               placeholder="What are you hopeful about?"
@@ -123,7 +123,7 @@ async function save() {
 
           <div class="entry-section thorn">
             <div class="label">Thorn</div>
-            <div class="helper">A challenge or difficulty you faced</div>
+            <div class="helper">a challenge or difficulty you faced</div>
             <textarea
               v-model="form.thorn"
               placeholder="What was hard today?"
@@ -135,14 +135,14 @@ async function save() {
 
           <div class="save-bar">
             <button class="save" :disabled="!isValid || loading" @click="save">
-              {{ loading ? 'Saving…' : 'Save Today\'s Rose' }}
+              {{ loading ? 'Saving…' : 'save today\'s rose' }}
             </button>
           </div>
         </div>
 
         <!-- Preview column -->
         <div class="today-card preview-card">
-          <div class="step-label">Your rose preview</div>
+          <div class="step-label">your rose preview</div>
           <div class="preview-box">
             <RoseCanvas
               :color="form.color || { name: '', hex: '#e8d5c4' }"

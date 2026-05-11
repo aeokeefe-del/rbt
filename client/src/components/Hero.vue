@@ -25,9 +25,6 @@ const seeds = SAMPLE_ENTRIES.slice(0, 12)
     </div>
     <div class="hero-cta-row">
       <button class="hero-cta" @click="$emit('primary')">begin your garden →</button>
-      <button class="hero-routerlink" type="button" @click="$emit('primary')">
-        new here? <em>sign up</em>
-      </button>
     </div>
   </section>
 

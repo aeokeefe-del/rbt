@@ -16,7 +16,6 @@ const BENEFITS = [
     <section class="benefits">
       <div class="benefits-inner">
         <p class="benefits-eyebrow">why it works</p>
-        <h2 class="benefits-title">Reflection, in three lines.</h2>
 
         <!-- Icon rows (default) -->
         <div v-if="layout === 'icon'" class="benefits-list-icon">

@@ -38,17 +38,17 @@ async function submit() {
 
         <form @submit.prevent="submit">
           <label class="field">
-            <span>Email</span>
+            <span>email</span>
             <input v-model="email" type="email" placeholder="you@example.com" autocomplete="email" />
             <div class="err">{{ errors.email }}</div>
           </label>
           <label class="field">
-            <span>Password</span>
+            <span>password</span>
             <input v-model="password" type="password" placeholder="At least 8 characters" autocomplete="new-password" />
             <div class="err">{{ errors.password }}</div>
           </label>
           <label class="field">
-            <span>Confirm Password</span>
+            <span>confirm password</span>
             <input v-model="confirm" type="password" placeholder="••••••••" autocomplete="new-password" />
             <div class="err">{{ errors.confirm }}</div>
           </label>
@@ -56,13 +56,13 @@ async function submit() {
           <div v-if="serverError" class="notice" style="margin-bottom:12px">{{ serverError }}</div>
 
           <button type="submit" class="submit" :disabled="loading">
-            {{ loading ? 'Creating account…' : 'Create Account' }}
+            {{ loading ? 'Creating account…' : 'create account' }}
           </button>
         </form>
 
         <div class="switch">
-          Already have an account?
-          <router-link to="/login" style="color:var(--burgundy);text-decoration:underline">Sign in</router-link>
+          already have an account?
+          <router-link to="/login" style="color:var(--burgundy);text-decoration:underline">sign in</router-link>
         </div>
       </div>
     </div>

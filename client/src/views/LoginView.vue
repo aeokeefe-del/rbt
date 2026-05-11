@@ -36,12 +36,12 @@ async function submit() {
 
         <form @submit.prevent="submit">
           <label class="field">
-            <span>Email</span>
+            <span>email</span>
             <input v-model="email" type="email" placeholder="you@example.com" autocomplete="email" />
             <div class="err">{{ errors.email }}</div>
           </label>
           <label class="field">
-            <span>Password</span>
+            <span>password</span>
             <input v-model="password" type="password" placeholder="••••••••" autocomplete="current-password" />
             <div class="err">{{ errors.password }}</div>
           </label>
@@ -49,13 +49,13 @@ async function submit() {
           <div v-if="serverError" class="notice" style="margin-bottom:12px">{{ serverError }}</div>
 
           <button type="submit" class="submit" :disabled="loading">
-            {{ loading ? 'Signing in…' : 'Sign In' }}
+            {{ loading ? 'signing in…' : 'sign in' }}
           </button>
         </form>
 
         <div class="switch">
-          Don't have an account?
-          <router-link to="/register" style="color:var(--burgundy);text-decoration:underline">Create one</router-link>
+          don't have an account?
+          <router-link to="/register" style="color:var(--burgundy);text-decoration:underline">create one</router-link>
         </div>
       </div>
     </div>
