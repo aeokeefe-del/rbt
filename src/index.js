@@ -10,11 +10,21 @@ const { getEntries, createEntry, updateEntry } = require('./controllers/entryCon
 
 const app = express();
 
-const allowedOrigins = [
-  process.env.CLIENT_ORIGIN || 'http://localhost:5173',
+const ALLOWED_ORIGINS = new Set([
+  'http://localhost:5173',
   'https://aeokeefe-del.github.io',
-];
-app.use(cors({ origin: allowedOrigins }));
+  process.env.CLIENT_ORIGIN,
+].filter(Boolean));
+
+const corsOptions = {
+  origin: (origin, cb) => cb(null, !origin || ALLOWED_ORIGINS.has(origin)),
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+app.options('/{*path}', cors(corsOptions));
 app.use(express.json());
 
 app.use('/api/auth', require('./routes/auth'));
