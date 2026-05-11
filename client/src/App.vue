@@ -16,9 +16,9 @@ const isHome = computed(() => route.path === '/')
     <div class="app-shell">
       <div class="top-stripe" />
       <Navbar />
-      <v-main style="padding:0">
+      <main style="flex:1;min-height:0">
         <router-view />
-      </v-main>
+      </main>
     </div>
   </v-app>
 </template>

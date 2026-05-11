@@ -25,6 +25,12 @@ app.put('/api/entries', authMiddleware, updateEntry);
 
 app.get('/api/health', (_req, res) => res.json({ status: 'ok' }));
 
+// Serve built Vue frontend
+const path = require('path');
+const dist = path.join(__dirname, '../client/dist');
+app.use(express.static(dist));
+app.get('*', (_req, res) => res.sendFile(path.join(dist, 'index.html')));
+
 const PORT = process.env.PORT || 3000;
 
 connectDB()
