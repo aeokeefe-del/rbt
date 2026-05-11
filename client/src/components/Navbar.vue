@@ -27,13 +27,13 @@ function logout() {
     </button>
     <div class="nav-actions">
       <template v-if="auth.token">
-        <button class="nav-link" @click="navigate('/today')">Today</button>
-        <button class="nav-link" @click="navigate('/garden')">Garden</button>
-        <button class="pill" @click="logout">Sign Out</button>
+        <button class="nav-link" @click="navigate('/today')">today</button>
+        <button class="nav-link" @click="navigate('/garden')">garden</button>
+        <button class="pill" @click="logout">sign out</button>
       </template>
       <template v-else>
-        <button class="pill" @click="navigate('/login')">Log In</button>
-        <button class="pill solid" @click="navigate('/register')">Sign Up</button>
+        <button class="pill" @click="navigate('/login')">log in</button>
+        <button class="pill solid" @click="navigate('/register')">sign up</button>
       </template>
     </div>
   </nav>

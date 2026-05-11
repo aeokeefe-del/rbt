@@ -20,8 +20,8 @@ const emit = defineEmits(['update:modelValue'])
       />
     </div>
     <div class="color-name">
-      <template v-if="modelValue">Selected: <strong>{{ modelValue.name }}</strong></template>
-      <template v-else>Choose a color for today</template>
+      <template v-if="modelValue">selected: <strong>{{ modelValue.name }}</strong></template>
+      <template v-else>choose a color for today</template>
     </div>
   </div>
 </template>

@@ -45,7 +45,7 @@ html, body {
   margin: 0;
   padding: 0;
   background: var(--cream);
-  color: var(--ink);
+  color: var(--olive);
   font-family: var(--serif);
   font-size: 18px;
   line-height: 1.5;
@@ -112,29 +112,28 @@ h1, h2, h3, h4 {
 .navbar .nav-link {
   font-family: var(--font-body);
   font-size: 22px;
-  color: var(--ink);
+  color: var(--olive);
   background: none;
   border: none;
   cursor: pointer;
   padding: 6px 12px;
+  padding-top: 3px;
   border-radius: 999px;
-  transition: background 0.18s, color 0.18s;
 }
 .navbar .nav-link:hover {
   background: rgba(122,31,54,0.08);
   color: var(--burgundy);
 }
 .navbar .pill {
-  font-family: var(--serif);
-  font-style: italic;
+  font-family: var(--font-body);
   font-size: 22px;
   padding: 8px 28px;
+  padding-top: 4px;
   border-radius: 999px;
   border: 1.5px solid var(--burgundy);
   background: var(--cream);
   color: var(--burgundy);
   cursor: pointer;
-  transition: background 0.18s, color 0.18s, transform 0.2s, box-shadow 0.2s;
 }
 .navbar .pill:hover {
   background: var(--burgundy);
@@ -720,8 +719,7 @@ h1, h2, h3, h4 {
   line-height: 1;
 }
 .today-header .greeting {
-  font-family: var(--serif);
-  font-style: italic;
+  font-family: var(--font-body);
   font-size: 22px;
   color: var(--ink-soft);
 }
@@ -732,7 +730,7 @@ h1, h2, h3, h4 {
   align-items: start;
 }
   .today-grid { grid-template-columns: 1fr; }
-}
+
 .today-card {
   background: var(--cream);
   border: 1.5px solid rgba(122,31,54,0.25);
@@ -740,11 +738,10 @@ h1, h2, h3, h4 {
   padding: 32px;
 }
 .today-card .step-label {
-  font-family: var(--ui);
+  font-family: var(--font-body);
   font-size: 12px;
-  text-transform: uppercase;
   letter-spacing: 0.16em;
-  color: var(--ink-soft);
+  color: var(--olive);
   margin-bottom: 10px;
 }
 .today-card h3 {
@@ -760,17 +757,16 @@ h1, h2, h3, h4 {
 .entry-section .label {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-family: var(--script);
+  gap: 5px;
+  font-family: var(--font-display);
+  color: var(--burgundy);
   font-size: 36px;
   line-height: 1;
-  margin-bottom: 6px;
 }
 .entry-section .helper {
-  font-family: var(--serif);
-  font-style: italic;
+  font-family: var(--font-body);
   font-size: 16px;
-  color: var(--ink-soft);
+  color: var(--olive);
   margin-bottom: 8px;
 }
 .entry-section textarea {
@@ -781,7 +777,7 @@ h1, h2, h3, h4 {
   border: 1.5px solid rgba(122,31,54,0.25);
   background: var(--cream);
   border-radius: var(--radius-sm);
-  font-family: var(--serif);
+  font-family: var(--font-body);
   font-size: 18px;
   color: var(--ink);
   outline: none;
@@ -795,15 +791,14 @@ h1, h2, h3, h4 {
 }
 .save-bar .save {
   padding: 14px 32px;
+  padding-top: 7px;
   border-radius: 999px;
   background: var(--burgundy);
   color: var(--cream);
   border: none;
-  font-family: var(--serif);
-  font-style: italic;
+  font-family: var(--font-body);
   font-size: 22px;
   cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
 }
 .save-bar .status {
   font-family: var(--ui);
@@ -852,6 +847,7 @@ h1, h2, h3, h4 {
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 12px;
+  color: var(--olive);
 }
 .color-swatch {
   width: 36px;
@@ -864,13 +860,13 @@ h1, h2, h3, h4 {
   position: relative;
 }
 .color-swatch.selected {
-  border-color: var(--ink);
+  border-color: var(--burgundy);
   transform: scale(1.2);
 }
 .color-name {
   font-family: var(--ui);
   font-size: 13px;
-  color: var(--ink-soft);
+  color: var(--burgundy);
 }
 .adj-grid {
   display: grid;
@@ -1295,14 +1291,13 @@ h1, h2, h3, h4 {
   box-shadow: 0 6px 22px rgba(60, 16, 30, 0.06);
 }
 .today-card .step-label {
-  color: var(--olive-2);
+  color: var(--burgundy);
 }
 .entry-section .helper {
-  color: var(--olive-2);
+  color: var(--olive);
 }
 .entry-section textarea::placeholder {
   color: rgba(60, 16, 30, 0.35);
-  font-style: italic;
 }
 
 .preview-card .preview-box {
@@ -1327,7 +1322,7 @@ h1, h2, h3, h4 {
   color: var(--olive-2);
 }
 .garden-header .subtitle {
-  color: var(--navy-2);
+  color: var(--burgundy);
 }
 .garden-yearpicker {
   border-color: var(--olive-2);
