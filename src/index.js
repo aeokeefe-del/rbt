@@ -29,7 +29,7 @@ app.get('/api/health', (_req, res) => res.json({ status: 'ok' }));
 const path = require('path');
 const dist = path.join(__dirname, '../client/dist');
 app.use(express.static(dist));
-app.get('*', (_req, res) => res.sendFile(path.join(dist, 'index.html')));
+app.get('/{*path}', (_req, res) => res.sendFile(path.join(dist, 'index.html')));
 
 const PORT = process.env.PORT || 3000;
 
