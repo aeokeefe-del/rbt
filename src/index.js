@@ -10,7 +10,11 @@ const { getEntries, createEntry, updateEntry } = require('./controllers/entryCon
 
 const app = express();
 
-app.use(cors({ origin: process.env.CLIENT_ORIGIN || 'http://localhost:5173' }));
+const allowedOrigins = [
+  process.env.CLIENT_ORIGIN || 'http://localhost:5173',
+  'https://aeokeefe-del.github.io',
+];
+app.use(cors({ origin: allowedOrigins }));
 app.use(express.json());
 
 app.use('/api/auth', require('./routes/auth'));
