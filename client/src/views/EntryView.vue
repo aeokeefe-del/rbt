@@ -18,6 +18,17 @@ const displayAdjective = computed(() =>
     : entry.value?.adjective || ''
 )
 
+function formatDate(dateStr) {
+  if (!dateStr) return ''
+  const [, month, day] = dateStr.split('-').map(Number)
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December']
+  const s = day % 10
+  const suffix = day >= 11 && day <= 13 ? 'th' : s === 1 ? 'st' : s === 2 ? 'nd' : s === 3 ? 'rd' : 'th'
+  return `${months[month - 1]} ${day}${suffix}`
+}
+
+const displayDate = computed(() => formatDate(entry.value?.date))
+
 onMounted(async () => {
   try {
     entry.value = await entriesStore.fetchByIndex(
@@ -41,7 +52,7 @@ onMounted(async () => {
     <template v-else>
       <div class="garden-header" style="margin-bottom:28px">
         <div>
-          <div class="title" style="font-size:56px">Rose #{{ entryNumber }}</div>
+          <div class="title" style="font-size:56px">Rose #{{ entryNumber }} <span class="entry-date-sep">·</span> {{ displayDate }}</div>
           <div class="subtitle">{{ displayAdjective }} · {{ entry.color?.name }}</div>
         </div>
       </div>

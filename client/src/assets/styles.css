@@ -1074,18 +1074,28 @@ h1, h2, h3, h4 {
   gap: 36px;
   align-items: start;
 }
+.entry-date-sep {
+  font-style: normal;
+  color: var(--ink-soft);
+  font-size: 0.6em;
+  vertical-align: middle;
+}
 .read-card {
-  border: 1.5px solid;
+  border: 1.5px solid var(--c, rgba(122,31,54,0.2));
   border-radius: var(--radius);
   padding: 24px 28px;
   margin-bottom: 14px;
-  background: var(--cream);
+  background: color-mix(in srgb, var(--c, var(--cream)) 7%, var(--cream));
 }
+.read-card.rose  { --c: var(--burgundy); }
+.read-card.bud   { --c: var(--olive); }
+.read-card.thorn { --c: var(--navy); }
 .read-card .label {
   font-family: var(--script);
   font-size: 36px;
   line-height: 1;
   margin-bottom: 6px;
+  color: var(--c, var(--ink));
 }
 .read-card p {
   font-family: var(--serif);
