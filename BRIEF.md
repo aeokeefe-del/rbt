@@ -66,4 +66,4 @@ Journaling consistently is hard — open-ended prompts lead to blank pages. Rose
 ---
 
 ## Authentication
-**Yes.** Each garden is private and personal — authentication ensures users can only read and write their own entries, and keeps the daily reflection data secure.
+**Yes, it is very important each user has access to their individual garden.** Each garden is private and personal — authentication ensures users can only read and write their own entries, and keeps the daily reflection data secure.
