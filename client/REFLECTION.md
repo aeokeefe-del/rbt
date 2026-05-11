@@ -1,4 +1,4 @@
-# REFLECTION.md — Project Proposal
+# REFLECTION.md — 
 
 ## Project Name
 **Rose Bud Thorn**
