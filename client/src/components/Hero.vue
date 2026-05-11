@@ -1,7 +1,7 @@
 <script setup>
 import RoseCanvas from './RoseCanvas.vue'
 import { SAMPLE_ENTRIES } from '../constants/palette'
-import heroImg from '../assets/hero_img_rbt.png'
+import heroImg from '../assets/hero_img_rbt.svg'
 
 defineProps({ variant: { type: String, default: 'empty' } })
 defineEmits(['primary', 'secondary'])
